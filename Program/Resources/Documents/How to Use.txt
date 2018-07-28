@@ -1,0 +1,9 @@
+Download the Arduino Software: (https://www.arduino.cc/en/Main/Software) and download the right software for your OS.
+Open Arduino
+Paste the code from the Instructions file in the repository
+Download and use (This program was made for the Arduino Uno R3 if you want to download this program to another board, then change the pins to change)
+
+                              CHANGES TO THE BOARD:
+-CHANGE DIGITAL PIN 13 TO YOUR PROPER BUILT_INLED
+-CHANGE YOUR TOOLS TO THE RIGHT ONE AS WELL
+-CHECK OTHER NECCESSARY ELEMENTS NEEDED FOR THE UPLOAD

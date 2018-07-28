@@ -1,0 +1,4 @@
+These are the programs or functions used for this program to work
+1. Blink, a simple program that flashes the BUILT_INLED from the pin: open the Blink.ino to see it
+2. DHT11, a more complex program used with the DHT11 humidity sensor that also tells the temperature in the room
+3. Serial Port uses

@@ -1,0 +1,83 @@
+//THIS IS THE CODE USED IN THE ARDUINO PROGRAM
+//==============================================================
+//MICHAEL LAU                                                  |
+//2018/24/6 | SUMMER 2018                                      |
+//THIS PROGRAM IS MADE FOR USE ON THE ARDUINO UNO R3           |
+//INSTALL SIMPLE DHT FROM INCLUDE LIBRARY (IN SKETCH FOLDER)   |
+//            INCTRUCTIONS:                                    |
+//- CONNECT CIRCUIT                                            |
+//==========================                                   |
+//    for DHT11,           |                                   |
+//      VCC: 5V or 3V      |                                   |
+//      GND: GND           |                                   |
+//      DATA: 7            |                                   |
+//==========================                                   |
+//- CHECK FOR PROGRAM ERRORS                                   |
+//- CLICK THE VERIFY BUTTON                                    |
+//- CHECK THE CIRCUIT                                          |
+//- MAKE SURE THE GREEN LIGHT IS ON ON THE ARDUINO UNO         |
+//- UPLOAD PROGRAM                                             |
+//- OPEN SERIAL MONITER                                        |
+//- PROGRAM SHOULD RUN                                         |
+//- MODIFY THE PROGRAM SO THAT IT WORKS BETTER                 |
+//==============================================================
+#include <SimpleDHT.h>
+//=============================
+// for DHT11,                 |
+//      (PIN 1)Data: D7       |
+//      (PIN 2)VCC: 5V or 3V  |
+//      (PIN 3)GND: GND       |
+//=============================
+
+
+int pinDHT11 = 7;
+SimpleDHT11 dht11;
+
+void setup() {
+  Serial.begin(9600);
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);//DEFINES BUILT IN LED (PIN 13 ON THE UNO R3)
+}
+
+// delete these commentS to show random numbers
+//  Serial.print("Sample RAW Bits: "); //TESTS SIGNAL STRENGTH
+//  for (int i = 0; i < 40; i++) {
+//  Serial.print((int)data[i]);
+//  if (i > 0 && ((i + 1) % 4) == 0) {
+//    Serial.print(' ');
+//    }
+//  }
+//  Serial.println("");
+
+void loop() {
+  // start working...
+  Serial.println("=================================================================");
+  Serial.println("| CRYPTO'S |==| PADD |.");
+  
+  // read with raw sample data.
+  byte temperature = 0;
+  byte humidity = 0;
+  byte data[40] = {0};
+  if (dht11.read(pinDHT11, &temperature, &humidity, data)) {
+    Serial.print("TRICORDER MALFUNCTIONING, TRY RESTARTING");//INFORMS THE USER THAT THE DEVICE IS NOT WORKING 
+    return;
+  }
+
+  Serial.print("TEMPERATURE "); digitalWrite(LED_BUILTIN, HIGH);//TURNS LED ON AND ALSO STATES "TEMPERATURE"
+  delay(10);//waits 0.01 millisecs
+  Serial.print((int)temperature); Serial.print(" *C, "); digitalWrite(LED_BUILTIN, LOW); //TURNS LED OFF AND RESPONDS WITH THE CURRENT TEMPERATURE
+  Serial.print("HUMIDITY "); digitalWrite(LED_BUILTIN, LOW); //TURNS LED OFF AND STATES "HUMIDITY"
+  delay(30);//waits 0.03 millisecs
+  Serial.print((int)humidity); Serial.println(" %"); digitalWrite(LED_BUILTIN, HIGH);//TURNS LED ON AND RESPONDS WITH THE CURRENT HUMIDITY
+  delay(10);//waits 0.01 millisecs
+  Serial.print("UPDATE#:"); digitalWrite(LED_BUILTIN, LOW); //TURNS LED OFF AND REPORTS A RANDOM UPDATE NUMBER AS A SERIAL
+  Serial.print((random(1000000,9999999)));//CHOOSES THE RANDOM UPDATE SERIAL NUMBER
+  Serial.println("==================================================");//divides the line from the end of the last line
+  delay((random(1000,10000))); //WAIT 1000-5000 MILLISECS (1-5 SECS) BEFORE NEXT DATA UPDATE
+
+}
+//============================================================================================================================================
+//IF THIS PROGRAM DOES NOT WORK, THEN CHECK FOR THE CORRECT TOOLS OR ELSE USE " arduino.cc/en/Guide/Troubleshooting#upload " FOR EXTRA HELP  |
+//SUGGESTED PROJECTS: ROBOTIC ARM, AI2 CHIP, STANDALONE TRICORDER, STAR TREK TRICORDER                                                       |
+//THIS PROJECT WAS INTENDED TO BE A STAR TREK PADD AS SEEN ON STAR TREK VOYAGER                                                              |
+//============================================================================================================================================

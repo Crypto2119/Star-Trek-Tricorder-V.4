@@ -1,0 +1,4 @@
+This is version 14 of the Tricorder
+Improvements:
+-Uses Arduino Nano
+-More Star Trek Effects/Closer to the original before case

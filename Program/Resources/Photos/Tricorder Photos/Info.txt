@@ -1,0 +1,1 @@
+These are the Photos involved with the Tricorder Versions which uses the Arduino Nano, Not the R3 Uno
